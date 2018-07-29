@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import com.carledwinj.gestaocontas.enums.StatusEnum;
 
@@ -17,6 +18,8 @@ public class Conta {
 	private BigDecimal valor;
 	private BigDecimal valorPago;
 	private StatusEnum status;
+	@ManyToOne
+	private Pagamento pagamento;
 
 	public Integer getId() {
 		return id;
@@ -53,6 +56,12 @@ public class Conta {
 	}
 	public void setStatus(StatusEnum status) {
 		this.status = status;
+	}
+	public Pagamento getPagamento() {
+		return pagamento;
+	}
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
 	}
 	
 }

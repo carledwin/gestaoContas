@@ -23,7 +23,8 @@ public class Swagger2Configuration {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
 				.apis(RequestHandlerSelectors.basePackage("com.carledwinj.gestaocontas.restcontroller"))
-				.paths(regex("/contas.*"))
+				/*.paths(regex("/pagamentos.*"))*/
+				.paths(regex("/*.*"))
 				.build()
 				.apiInfo(getApiInfo());
 	}
@@ -34,9 +35,15 @@ public class Swagger2Configuration {
 			      "Esta api tem por objetivo controlar contas a vencer, vencidas, pagas e canceladas.",
 			      "1.0.0",
 			      "Terms of API",
-			      new Contact("Carl Edwin Antonio Nascimento", "https://carledwinj.wordpress.com/", "carlinstr@gmail.com"),
+			      getContact(),
 			      "Apache License Version 2.0",
 			      "https://www.apache.org/licesen.html",
 			      new ArrayList<VendorExtension>());
+	}
+
+	private Contact getContact() {
+		return new Contact("Carl Edwin Antonio Nascimento", 
+	    		  "https://carledwinj.wordpress.com/", 
+	    		  "carlinstr@gmail.com");
 	}
 }
